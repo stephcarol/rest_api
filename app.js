@@ -9,8 +9,13 @@ var usersRouter = require('./routes/users');
 
 var suppliersRouter = require('./routes/suppliers');
 
+/* REFERENCIA AL MÓDULO */
+const swaggerUi = require('swagger-ui-express')
 
-var app = express();
+/* REFERENCIA AL ARCHIVO GENERADO */
+const swaggerFile = require('./swagger_output.json')
+
+const app = express();
 
 
 
@@ -27,6 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/suppliers', suppliersRouter);
+/* CONFIGURACIÓN DE LA RUTA A LA DOCUMENTACIÓN */
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,5 +51,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

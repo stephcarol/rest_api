@@ -9,7 +9,7 @@ router.get('/findAll', function(req, res, next) {
     .then(data=>{
         res.json(data);
     })
-    .catch(error=>res.status(400).send(errror))
+    .catch(error=>res.status(400).send(error))
 });
 
 

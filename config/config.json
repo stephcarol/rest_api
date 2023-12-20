@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "EliasSalomon28",
-    "database": "database_development",
+    "database": "northwind",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
